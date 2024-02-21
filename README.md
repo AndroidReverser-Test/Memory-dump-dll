@@ -1,2 +1,9 @@
-# Memory-dump-dll
-使用frida搜索内存中的dll后将其dump下
+# 使用
+在启动frida并打开要dump的游戏后,进入该项目文件夹在命令行使用 __python dump.py__ 运行py程序即可，程序结束运行后，若无异常发生，将会生成一个dump文件夹，内含dump.bin文件，将dump文件夹拖拽至get_dll_from_bin.exe程序（该程序来源于网络）将会自动在dump文件夹中生成dll文件。
+
+
+# 注意事项
+###    该项目为frida项目，需要配置好frida环境
+###    必须是游戏加载了dll到内存中且其pe头没有被抹除才能被找到，纯正的il2cpp项目是不会加载dll到内存中的。
+###    程序默认frida是以非标准端口（2346）启动的，可至dump.py处修改。
+###    程序有时会发生错误,退出游戏重新尝试即可。
