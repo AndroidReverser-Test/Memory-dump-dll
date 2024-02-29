@@ -32,7 +32,7 @@ if __name__ == "__main__":
     script.exports.dump()
 
     get_dll(result)
-    print("sucess")
+    print("done")
     
 
     
