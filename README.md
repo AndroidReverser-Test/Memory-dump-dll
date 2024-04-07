@@ -1,5 +1,5 @@
 # 使用
-在启动frida并打开要dump的游戏后,进入该项目文件夹在命令行使用 __python dump.py__ 运行py程序即可，程序结束运行后，若无异常发生，将会生成一个dump文件夹，内含dump.bin文件，将dump文件夹拖拽至get_dll_from_bin.exe程序（该程序来源于网络）将会自动在dump文件夹中生成dll文件。
+在启动frida并打开要dump的游戏后,进入该项目文件夹在命令行使用 __python dump.py__ 运行py程序即可，程序结束运行后，若无异常发生，将会生成一个dump文件夹，内含所dump下来的dll文件。
 
 
 # 注意事项
