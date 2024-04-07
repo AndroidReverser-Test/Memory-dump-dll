@@ -15,11 +15,15 @@ def on_message(message, data):
             print(message["payload"])
 
 def get_dll(rls):
+    count = 1
+    dos_str = "4D5A90000300000004000000FFFF0000B800000000000000400000000000000000000000000000000000000000000000000000000000000000000000800000000E1FBA0E00B409CD21B8014CCD21546869732070726F6772616D2063616E6E6F742062652072756E20696E20444F53206D6F64652E0D0D0A2400000000000000"
     if os.path.exists("dump") == False:
         os.mkdir("dump")
-    with open("dump/dump.bin","wb") as f:
-        for item in rls:
+    for item in rls:
+        with open("./dump/"+str(count)+".dll","wb") as f:
+            f.write(bytes.fromhex(dos_str))
             f.write(item)
+            count += 1
 
 if __name__ == "__main__":
     result = []
