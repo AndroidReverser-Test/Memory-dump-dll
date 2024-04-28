@@ -4,22 +4,22 @@ rpc.exports = {
         let sizes = [];
         let size=0;
         let s0,s1,s2;
-        let characteristics = [];
         let pattern = "50 45 00 00";
+        let max_size = 0x61A8000;//默认dll的最大值为100m
         send("searching");
         Process.enumerateRanges('r--').forEach(function (range) {
             try {
                 Memory.scanSync(range.base, range.size,pattern).forEach(function (match) {
-                    if(match.address>0x6000000000
-                    && get_hex_str(match.address.add(0x18).readByteArray(2)).indexOf("0b01")!=-1){
+                    if(get_hex_str(match.address.add(0x18).readByteArray(2)).indexOf("0b01")!=-1){
                         size = 0x180;
                         s0 = match.address.add(0xf8).add(16).readInt();
                         s1 = match.address.add(0x120).add(16).readInt();
                         s2 = match.address.add(0x148).add(16).readInt();
                         size = size+s0+s1+s2;
-                        results.push(match.address);
-                        characteristics.push(match.address.add(0x16).readByteArray(2));
-                        sizes.push(size);
+                        if(size>0 && size<max_size){
+                            results.push(match.address);
+                            sizes.push(size);
+                        }
                     }
                 });
             } catch (e) {
